@@ -1,4 +1,6 @@
-![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) 03: Asynchronous Callbacks
+[![Build Status](https://travis-ci.org/JPLaw/03-asyncronous-callbacks.svg?branch=master)](https://travis-ci.org/JPLaw/03-asyncronous-callbacks)
+
+03: Asynchronous Callbacks
 ===
 
 ## Submission Instructions
