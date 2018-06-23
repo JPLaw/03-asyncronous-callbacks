@@ -2,8 +2,8 @@
 
 const reader = require('../lib/reader.js');
 
-describe(), function() {
-    it ('should return an array', function (){
+describe('testing fileReader module that reads files'), () => {
+    it('should return an array', function (){
         return
     }   if(err) console.log(err);
         expect();
