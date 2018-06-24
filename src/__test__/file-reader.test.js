@@ -37,5 +37,13 @@ describe('tests to see if fileReader reads the files', () => {
       expect(data).toEqual(['MOCK 1', 'MOCK 2', 'MOCK 3']);
       expect(err).toBeNull();
     });
+    fileReader.readMoreFiles(mockText2, (err, data2) => {
+      expect(data2).toEqual(mockText2);
+      expect(err).toBeNull();
+    });
+    fileReader.readMoreFiles(mockText3, (err, data3) => {
+      expect(data3).toEqual(mockText3);
+      expect(err).toBeNull();
+    });
   });
 });
