@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // const logger = require('./logger');
 // const fs = require('fs');
@@ -12,8 +12,6 @@
 // // this reads a single file path
 // fileReader.readFile(data1);
 
-
-'use strict';
 
 const fs = require('fs');
 
