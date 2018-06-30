@@ -3,9 +3,9 @@
 const fs = require('fs');
 const fileReader = require('../lib/reader');
 
-const mockText1 = `${__dirname}/./mock-assets/1.txt`;
-const mockText2 = `${__dirname}/./mock-assets/2.txt`;
-const mockText3 = `${__dirname}/./mock-assets/3.txt`;
+const mockText1 = `${__dirname}/mock-assets/1.txt`;
+const mockText2 = `${__dirname}/mock-assets/2.txt`;
+const mockText3 = `${__dirname}/mock-assets/3.txt`;
 
 let mockData = [];
 
