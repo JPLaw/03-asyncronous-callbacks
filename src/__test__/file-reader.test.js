@@ -7,8 +7,9 @@ const mockText1 = `${__dirname}/./mock-assets/1.txt`;
 const mockText2 = `${__dirname}/./mock-assets/2.txt`;
 const mockText3 = `${__dirname}/./mock-assets/3.txt`;
 
+let mockData = [];
+
 describe('#READER: file reader module that reads exactly three files', () => {
-  let mockData;
   beforeAll(() => {
     mockData = [
       fs.readFile(mockText1, { encoding: 'utf-8' }),
@@ -17,7 +18,7 @@ describe('#READER: file reader module that reads exactly three files', () => {
     ];
   });
 
-  it('returns the mock data in the correct order', () => {
+  it('should show that the data is the same data in our mock array', () => {
     const testPaths = [mockText1, mockText2, mockText3];
     reader(testPaths, (err, data) => {
       expect(data[0]).toEqual(mockData[0]);
