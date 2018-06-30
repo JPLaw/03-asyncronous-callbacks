@@ -1,33 +1,27 @@
 'use strict';
 
-// const logger = require('./logger');
-// const fs = require('fs');
-
-// const fileReader = module.exports = {};
-
-// const data1 = `${__dirname}/./lib/assets/1.txt`;
-// const data2 = `${__dirname}/./lib/assets/2.txt`;
-// const data3 = `${__dirname}/./lib/assets/3.txt`;
-
-// // this reads a single file path
-// fileReader.readFile(data1);
-
-
 const fs = require('fs');
+const logger = require('../lib/logger');
 
-const reader = module.exports = (paths, callback) => { // eslint-disable-line
-  const filePath1 = paths[0];
-  const filePath2 = paths[1];
-  const filePath3 = paths[2];
+const fileReader = module.exports = {};
+
+// this reads a single file path
+fileReader.readFile = (paths, callback) => {
+  return fs.readFile(paths, (error, data) => {
+    if (error) return callback(error);
+    logger.log(logger.INFO, data.toString());
+    return undefined;
+  });
+};
   
-  fs.readFile(filePath1, (err1, data1) => {
-    if (err1) return callback(err1);
-    return fs.readFile(filePath2, (err2, data2) => {
-      if (err2) return callback(err2);
-      return fs.readFile(filePath3, (err3, data3) => {
-        if (err3) return callback(err3);
-        callback(null, [data1.toString(), data2.toString(), data3.toString()]);
-        return undefined;
+fileReader.readMoreFiles = (files, callback) => {
+  return fs.readFile(files[0], (error1, data1) => {
+    if (error1) return callback(error1);
+    return fs.readFile(files[1], (error2, data2) => {
+      if (error2) return callback(error2);
+      return fs.readFile(files[2], (error3, data3) => {
+        if (error3) return callback(error3);
+        return callback(null, [data1.toString(), data2.toString(), data3.toString()]);
       });
     });
   });

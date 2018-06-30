@@ -6,8 +6,8 @@ const logger = require('../logger');
 const fileReader = module.exports = {};
 
 fileReader.readFile = (filePath) => {
-  return fs.readFile(filePath, (err, data) => {
-    if (err) throw err;
+  return fs.readFile(filePath, (error, data) => {
+    if (error) throw error;
     logger.log(logger.INFO, data.toString());
   });
 };
@@ -20,7 +20,7 @@ fileReader.readThreeFiles = (filePath1, filePath2, filePath3, callback) => {
       if (err2) return callback(err2);
       return fs.readFile(filePath3, (err3, data3) => {
         if (err3) return callback(err3);
-        return callback(null, data1.toString(), data2.toString(), data3.toString());
+        return callback(null, [data1.toString(), data2.toString(), data3.toString()]);
       });
     });
   });

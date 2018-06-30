@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const reader = require('./../lib/reader');
+const fileReader = require('../lib/reader');
 
 const mockText1 = `${__dirname}/./mock-assets/1.txt`;
 const mockText2 = `${__dirname}/./mock-assets/2.txt`;
@@ -9,7 +9,7 @@ const mockText3 = `${__dirname}/./mock-assets/3.txt`;
 
 let mockData = [];
 
-describe('#READER: file reader module that reads exactly three files', () => {
+describe('tests to see if fileReader reads the files', () => {
   beforeAll(() => {
     mockData = [
       fs.readFile(mockText1, { encoding: 'utf-8' }),
@@ -19,36 +19,31 @@ describe('#READER: file reader module that reads exactly three files', () => {
   });
 
   it('should show that the data is the same data in our mock array', () => {
-    const testPaths = [mockText1, mockText2, mockText3];
-    reader(testPaths, (err, data) => {
-      expect(data[0]).toEqual(mockData[0]);
-      expect(data[1]).toEqual(mockData[1]);
-      expect(data[2]).toEqual(mockData[2]);
+    fileReader.readFile(mockText1, (error, data1) => {
+      expect(data1).toEqual(mockData[0]);
+      expect(error).toBeNull();
+    });
+  });
+
+  it('throws an error on bad path', () => {
+    fileReader.readFile('bad path', (error) => {
+      expect(error).toHaveProperty('errno');
+      expect(error.code).toEqual('ENOENT');
+    });
+  });
+
+  it('this will test multiple arrays', () => {
+    fileReader.readMoreFiles([mockText1, mockText2, mockText3], (err, data) => {
+      expect(data).toEqual(['MOCK 1', 'MOCK 2', 'MOCK 3']);
       expect(err).toBeNull();
     });
-  });
-
-  it('throws an error on bad path at position 1', () => {
-    const testPaths = ['bad path', mockText2, mockText3];
-    reader(testPaths, (err) => {
-      expect(err).toHaveProperty('errno');
-      expect(err.code).toEqual('ENOENT');
+    fileReader.readMoreFiles(mockText2, (err, data2) => {
+      expect(data2).toEqual(mockText2);
+      expect(err).toBeNull();
     });
-  });
-
-  it('throws an error on bad path at position 2', () => {
-    const testPaths = [mockText1, 'bad path', mockText3];
-    reader(testPaths, (err) => {
-      expect(err).toHaveProperty('errno');
-      expect(err.code).toEqual('ENOENT');
-    });
-  });
-
-  it('throws an error on bad path at position 3', () => {
-    const testPaths = [mockText1, mockText2, 'bad path'];
-    reader(testPaths, (err) => {
-      expect(err).toHaveProperty('errno');
-      expect(err.code).toEqual('ENOENT');
+    fileReader.readMoreFiles(mockText3, (err, data3) => {
+      expect(data3).toEqual(mockText3);
+      expect(err).toBeNull();
     });
   });
 });
