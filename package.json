@@ -4,9 +4,10 @@
   "description": "[![Build Status](https://travis-ci.org/JPLaw/03-asyncronous-callbacks.svg?branch=master)](https://travis-ci.org/JPLaw/03-asyncronous-callbacks)",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . && jest --coverage",
+    "test": "eslint . --fix && jest --coverage --detectOpenHandles --forceExit --runInBand",
     "testWatch": "jest --coverage --watchAll",
-    "test-nolint": "jest --coverage",
+    "test-nolint": "jest --coverage --detectOpenHandles --runInBand --forceExit",
+    "test-logs": "jest --coverage --detectOpenHandles --runInBand",
     "lint": "eslint ."
   },
   "keywords": [],
