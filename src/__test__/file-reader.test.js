@@ -10,7 +10,7 @@ const mockText3 = `${__dirname}/mock-assets/3.txt`;
 let mockData = [];
 
 describe('tests to see if fileReader reads the files', () => {
-  beforeAll(() => {
+  beforeAll(() => { 
     mockData = [
       fs.readFile(mockText1, { encoding: 'utf-8' }),
       fs.readFile(mockText2, { encoding: 'utf-8' }),

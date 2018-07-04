@@ -1,7 +1,7 @@
 {
   "name": "day-01",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Build Status](https://travis-ci.org/JPLaw/03-asyncronous-callbacks.svg?branch=master)](https://travis-ci.org/JPLaw/03-asyncronous-callbacks)",
   "main": "index.js",
   "scripts": {
     "test": "eslint . && jest --coverage",
@@ -24,5 +24,14 @@
     "eslint-plugin-react": "^7.9.1",
     "jest": "^23.1.0",
     "winston": "^3.0.0"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JPLaw/03-asyncronous-callbacks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JPLaw/03-asyncronous-callbacks/issues"
+  },
+  "homepage": "https://github.com/JPLaw/03-asyncronous-callbacks#readme"
 }
