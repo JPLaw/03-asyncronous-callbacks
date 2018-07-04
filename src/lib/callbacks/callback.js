@@ -13,9 +13,9 @@ const useCallback = (callback) => {
 
 useCallback(myCallback);
   
-const errorFirstCallback = (err, data) => {
-  if (err) {
-    return console.log('2: ERROR: ', err);
+const errorFirstCallback = (error, data) => {
+  if (error) {
+    return console.log('2: ERROR: ', error);
   }
   return console.log('2: SUCCESS: Received: ', data);
 };
@@ -26,11 +26,11 @@ const useErrorFirstCallback = (text, callback) => {
       throw new TypeError(`${text} is not a string`);
     }
     console.log('1: Calling the error first callback with successful text input');
-    callback(undefined, text);
+    callback(null, text);
     console.log('3: SUCCESS: After the error first callback with successful text input');
-  } catch (err) {
+  } catch (error) {
     console.log('1: Calling the error first callback with ERROR');
-    callback(err, null);
+    callback(error, null);
     console.log('3: ERROR: after the error first callback with bad input');
   }
 };
